@@ -40,7 +40,9 @@ public class Build : MonoBehaviour {
 
         EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
 
-        var options = BuildOptions.AcceptExternalModificationsToPlayer;
+        // https://github.com/asmadsen/react-native-unity-view/issues/27#issuecomment-737425365
+        var options = BuildOptions.AllowDebugging;
+        EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
         var report = BuildPipeline.BuildPlayer(
             GetEnabledScenes(),
             apkPath,
@@ -82,7 +84,8 @@ public class Build : MonoBehaviour {
 
         EditorUserBuildSettings.iOSBuildConfigType = iOSBuildType.Release;
 
-        var options = BuildOptions.AcceptExternalModificationsToPlayer;
+        // https://github.com/asmadsen/react-native-unity-view/issues/25#issuecomment-769594254
+        var options = BuildOptions.AllowDebugging;
         var report = BuildPipeline.BuildPlayer(
             GetEnabledScenes(),
             iosExportPath,

@@ -6,24 +6,16 @@ Pod::Spec.new do |s|
   s.name         = "react-native-unity-view"
   s.version      = package["version"]
   s.summary      = package["description"]
-  s.description  = <<-DESC
-                  react-native-unity-view
-                   DESC
-  s.homepage     = "https://github.com/asmadsen/react-native-unity-view"
-  s.license      = "MIT"
-  # s.license    = { :type => "MIT", :file => "LICENSE" }
-  s.authors      = { "Andreas Storesund Madsen" => "andreas@asmadsen.no" }
-  s.platforms    = { :ios => "9.0", :tvos => "10.0" }
-  s.source       = { :git => "https://github.com/asmadsen/react-native-unity-view.git", :tag => "#{s.version}" }
+  s.homepage     = package["homepage"]
+  s.license      = package["license"]
+  s.authors      = package["author"]["name"]
+
+  s.platforms    = { :ios => "10.0" }
+  s.source       = { :git => "https://github.com/azesmway/react-native-unity-play-ts.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm}"
-  s.public_header_files = 'ios/**/*.h'
-  s.frameworks = 'UnityFramework'
-  s.dependency "React"
 
-  s.xcconfig = {
-    'FRAMEWORK_SEARCH_PATHS' => '"${PODS_ROOT}/../UnityExport" "${PODS_CONFIGURATION_BUILD_DIR}"',
-    'OTHER_LDFLAGS' => '$(inherited) -framework UnityFramework ${PODS_LIBRARIES}'
-  }
+  s.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(BUILD_ROOT)/** $(CONFIGURATION_BUILD_DIR)/../**' }
+
+  s.dependency "React-Core"
 end
-
